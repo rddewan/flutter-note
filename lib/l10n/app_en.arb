@@ -1,14 +1,33 @@
 {
-    "@@last_modified": "2022-01-29T16:53:29.134106",
+    "@@last_modified": "2022-01-30T23:08:36.304890",
     "@@locale": "en",
-    "appBarTitle": "Flutter Demo",
-    "homePageTitle": "Flutter Demo Home Page",
-    "counterMessage": "You have pushed the button this many {counter} times:",
-    "@counterMessage": {
-        "description": "Auto-generated for counterMessage",
+    "noRouteTitle": "No Route",
+    "noRouteMsg": "Sorry no route was found!",
+    "emptyFiled": "{lableText} cannot be empty",
+    "@emptyFiled": {
+        "description": "Auto-generated for emptyFiled",
         "placeholders": {
-            "counter": {}
+            "lableText": {}
         }
     },
-    "tooltip": "Increment"
+    "passwordLength": "{lableText} length must be greater then 7 char",
+    "@passwordLength": {
+        "description": "Auto-generated for passwordLength",
+        "placeholders": {
+            "lableText": {}
+        }
+    },
+    "notValidText": "{lable} is not valid",
+    "@notValidText": {
+        "description": "Auto-generated for notValidText",
+        "placeholders": {
+            "lable": {}
+        }
+    },
+    "appName": "Simple Note App",
+    "loginText": "Login",
+    "emailText": "Email",
+    "passwordText": "Password",
+    "tabletNotSupported": "Tablet device is not supported",
+    "desktopNotSupported": "Desktop device is not supported"
 }

@@ -1,14 +1,33 @@
 {
-    "@@last_modified": "2022-01-29T16:53:29.127028",
+    "@@last_modified": "2022-01-30T23:08:36.300782",
     "@@locale": "th",
-    "appBarTitle": "สาธิตการกระพือปีก",
-    "homePageTitle": "หน้าแรกสาธิตการกระพือปีก",
-    "counterMessage": "คุณได้ผลักปุ่มนี้จำนวนมาก {counter} ครั้ง:",
-    "@counterMessage": {
-        "description": "Auto-generated for counterMessage",
+    "noRouteTitle": "ไม่มีเส้นทาง",
+    "noRouteMsg": "ขออภัยไม่พบเส้นทาง!",
+    "emptyFiled": "{lableText} ไม่สามารถว่างเปล่า",
+    "@emptyFiled": {
+        "description": "Auto-generated for emptyFiled",
         "placeholders": {
-            "counter": {}
+            "lableText": {}
         }
     },
-    "tooltip": "การเพิ่ม"
+    "passwordLength": "{lableText} ความยาวจะต้องมีมากกว่า 7 ตัวอักษร",
+    "@passwordLength": {
+        "description": "Auto-generated for passwordLength",
+        "placeholders": {
+            "lableText": {}
+        }
+    },
+    "notValidText": "{lable} ไม่ถูกต้อง",
+    "@notValidText": {
+        "description": "Auto-generated for notValidText",
+        "placeholders": {
+            "lable": {}
+        }
+    },
+    "appName": "แอปบันทึกย่อง่าย ๆ",
+    "loginText": "เข้าสู่ระบบ",
+    "emailText": "อีเมล",
+    "passwordText": "รหัสผ่าน",
+    "tabletNotSupported": "ไม่รองรับอุปกรณ์แท็บเล็ต",
+    "desktopNotSupported": "ไม่รองรับอุปกรณ์เดสก์ท็อป"
 }

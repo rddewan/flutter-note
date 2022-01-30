@@ -1,14 +1,33 @@
 {
-    "@@last_modified": "2022-01-29T16:53:29.133491",
+    "@@last_modified": "2022-01-30T23:08:36.304307",
     "@@locale": "hi",
-    "appBarTitle": "फ्टरर डेमो",
-    "homePageTitle": "फ्टरर डेमो होम पेज",
-    "counterMessage": "आपने बटन को इस बटन को धक्का दिया है {counter} बार:",
-    "@counterMessage": {
-        "description": "Auto-generated for counterMessage",
+    "noRouteTitle": "कोई मार्ग नहीं",
+    "noRouteMsg": "क्षमा करें कोई रास्ता नहीं मिला!",
+    "emptyFiled": "{lableText} खाली नहीं हो सकता",
+    "@emptyFiled": {
+        "description": "Auto-generated for emptyFiled",
         "placeholders": {
-            "counter": {}
+            "lableText": {}
         }
     },
-    "tooltip": "वेतन वृद्धि"
+    "passwordLength": "{lableText} लंबाई तब अधिक होनी चाहिए तो 7 चार",
+    "@passwordLength": {
+        "description": "Auto-generated for passwordLength",
+        "placeholders": {
+            "lableText": {}
+        }
+    },
+    "notValidText": "{lable} मान्य नहीं है",
+    "@notValidText": {
+        "description": "Auto-generated for notValidText",
+        "placeholders": {
+            "lable": {}
+        }
+    },
+    "appName": "सरल नोट ऐप",
+    "loginText": "लॉग इन करें",
+    "emailText": "ईमेल",
+    "passwordText": "कुंजिका",
+    "tabletNotSupported": "टैबलेट डिवाइस समर्थित नहीं है",
+    "desktopNotSupported": "डेस्कटॉप डिवाइस समर्थित नहीं है"
 }

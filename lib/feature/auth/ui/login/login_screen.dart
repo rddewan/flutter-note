@@ -4,6 +4,7 @@ import 'package:note/util/app_const.dart';
 import 'package:note/widget/form/email_form_filed.dart';
 import 'package:note/widget/form/password_form_filed.dart';
 import 'package:note/widget/orange_gradient_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,13 +18,14 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget>  {
   late TextEditingController _passwordController;
   late FocusNode _passwordFocusNode;
   final _formKey = GlobalKey<FormState>();
-
+  late AppLocalizations? local;
   @override
   void initState() {    
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-    _passwordFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();   
+    
   }
 
   @override
@@ -34,9 +36,10 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget>  {
 
   @override
   Widget build(BuildContext context) {
+    local = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text(local!.loginText),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -53,12 +56,12 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget>  {
                     key: _formKey,
                     child: Column(
                       children: [
-                        EmailTextFormFiled(lable: 'Email', textController: _emailController),
+                        EmailTextFormFiled(lable: local!.emailText, textController: _emailController),
                         const SizedBox(height: 16.0),
-                        PasswordFormField(lableText: 'Password',textController: _passwordController,focusNode: _passwordFocusNode),                 
+                        PasswordFormField(lableText: local!.passwordText,textController: _passwordController,focusNode: _passwordFocusNode),                 
                         const SizedBox(height: 24.0),
                         OrangeGradientButton(                                
-                              text: 'Login',
+                              text: local!.loginText,
                               onTapCallBack: () {
                                   
                               },
@@ -75,15 +78,15 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget>  {
           }
           else if (maxWidth > mobileDeviceWidth && maxWidth <= tabDeviceWidth) {
             //is a tablet
-            return const Center(
-              child: Text('Tablet device is not supported'),
+            return Center(
+              child: Text(local!.tabletNotSupported),
             );
 
           }
           else {
             //is a desktop
-            return const Center(
-              child: Text('Desktop device is not supported'),
+            return Center(
+              child: Text(local!.desktopNotSupported),
             );
           }
 

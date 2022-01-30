@@ -1,2 +1,6 @@
-counterMessage:
-  0: counter
+emptyFiled:
+  0: lableText
+passwordLength:
+  0: lableText
+notValidText:
+  0: lable
