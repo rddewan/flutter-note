@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:note/util/device_info.dart';
 
 class OrangeGradientButton extends StatelessWidget {
   const OrangeGradientButton({
