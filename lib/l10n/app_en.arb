@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-01-29T16:53:29.134106",
+    "@@locale": "en",
+    "appBarTitle": "Flutter Demo",
+    "homePageTitle": "Flutter Demo Home Page",
+    "counterMessage": "You have pushed the button this many {counter} times:",
+    "@counterMessage": {
+        "description": "Auto-generated for counterMessage",
+        "placeholders": {
+            "counter": {}
+        }
+    },
+    "tooltip": "Increment"
+}

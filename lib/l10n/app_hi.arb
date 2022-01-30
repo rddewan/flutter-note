@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-01-29T16:53:29.133491",
+    "@@locale": "hi",
+    "appBarTitle": "फ्टरर डेमो",
+    "homePageTitle": "फ्टरर डेमो होम पेज",
+    "counterMessage": "आपने बटन को इस बटन को धक्का दिया है {counter} बार:",
+    "@counterMessage": {
+        "description": "Auto-generated for counterMessage",
+        "placeholders": {
+            "counter": {}
+        }
+    },
+    "tooltip": "वेतन वृद्धि"
+}

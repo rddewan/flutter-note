@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-01-29T16:53:29.127028",
+    "@@locale": "th",
+    "appBarTitle": "สาธิตการกระพือปีก",
+    "homePageTitle": "หน้าแรกสาธิตการกระพือปีก",
+    "counterMessage": "คุณได้ผลักปุ่มนี้จำนวนมาก {counter} ครั้ง:",
+    "@counterMessage": {
+        "description": "Auto-generated for counterMessage",
+        "placeholders": {
+            "counter": {}
+        }
+    },
+    "tooltip": "การเพิ่ม"
+}

@@ -1,0 +1,4 @@
+appBarTitle: Flutter Demo 
+homePageTitle: Flutter Demo Home Page  
+counterMessage: "You have pushed the button this many {{counter}} times:"  
+tooltip: Increment

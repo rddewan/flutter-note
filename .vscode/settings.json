@@ -1,0 +1,15 @@
+{
+    // set the flutter sdk for current project to use from fvm
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    // Remove .fvm files from search
+    "search.exclude": {
+      "**/.fvm": true
+    },
+    // Remove from file watching
+    "files.watcherExclude": {
+      "**/.fvm": true
+    },
+
+    "editor.fontSize": 16,
+    "files.autoSave": "afterDelay"
+}
