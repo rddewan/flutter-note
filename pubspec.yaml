@@ -1,5 +1,5 @@
 name: note
-description: A new Flutter project.
+description: A simple note app.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -33,17 +33,43 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0 
   cupertino_icons: ^1.0.2
-  flutter_translation_sheet: ^1.0.18+39
+  # flutter translation 
+  flutter_translation_sheet: ^1.0.18+39  
+  # freezed
+  freezed_annotation: ^1.1.0
+  json_annotation: ^4.4.0
+  # dio
+  dio: ^4.0.4
+  dio_http_formatter: ^2.1.0
+  # retrofit 
+  retrofit: '3.0.1'
+  # return multiple result ype
+  multiple_result: ^1.0.4
+  # state management with flutter riverpod
+  flutter_riverpod: ^1.0.3
+  # local storage
+  shared_preferences: ^2.0.12 
+  # A Flutter plugin to store data in secure storage:
+  flutter_secure_storage: ^5.0.2
+  # logger
+  logger: any  #for logging
+  #drift for sqlite 3 database (https://drift.simonbinder.eu/docs/getting-started/starting_with_sql/)
+  drift: ^1.3.0
+  #sqlite3_flutter_libs: ^0.5.3
+  path_provider: ^2.0.0
+  path: ^1.8.0
+  # drift end
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  freezed: ^1.1.1
+  retrofit_generator: '4.0.1'
+  build_runner: ^2.1.7
+  json_serializable: '>4.4.0'
+  #drift
+  drift_dev: ^1.3.0
+  #flutter lint
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
