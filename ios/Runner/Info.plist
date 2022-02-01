@@ -19,7 +19,7 @@
 		<string>hi</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>note</string>
+	<string>$(app_display_name)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

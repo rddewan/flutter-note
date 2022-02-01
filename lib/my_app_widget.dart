@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:note/core/route/route_generator.dart';
 import 'package:note/i18n/i18n.dart';
 import 'package:note/util/app_const.dart';
-
-
-void main() {
-  runApp(
-    // Enabled Riverpod for the entire application
-    const ProviderScope(child: MyApp())
-  );
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:note/core/enviroment/config_reader.dart';
 import 'package:note/util/app_const.dart';
 import 'package:note/widget/form/email_form_filed.dart';
 import 'package:note/widget/form/password_form_filed.dart';
@@ -66,7 +67,7 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget>  {
                                   
                               },
                         ),
-                      
+                        Text(ConfigReader.getBaseUrl())                    
                       ],
 
                     ),

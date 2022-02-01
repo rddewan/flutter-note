@@ -2,6 +2,16 @@
 
 A simple note take app
 
+## What is included
+* Flutter Version Management
+* App Translation with GoogleSheet
+* App Flavor
+* App Environment 
+* Flutter Riverpod StateManagement
+* Flutter Secure Storage
+* Drift - Sqlite Database
+* Dio / Retrofit
+* CodeMagic - CI/CD
 ## Getting Started with this project
 
 ## 1: Flutter command:
@@ -21,6 +31,14 @@ A simple note take app
 * open your terminal and type : fts run
 * for more about integrate with flutter intl package : (https://github.com/roipeker/flutter_translation_sheet/wiki/Integration-with-Flutter-Intl)
 
+
+## Run different flavor (command line)
+* flutter run --flavor dev -t main_dev.dart
+* flutter run --flavor uat -t main_uat.dart
+* flutter run --flavor prod -t main_prod.dart
+
+## Run different flavor from VS Code
+* Run and Debug > Select Flavor From Dropdown > Click  on Run Button
 
 ## Useful command
 * flutter pub run build_runner build --delete-conflicting-outputs

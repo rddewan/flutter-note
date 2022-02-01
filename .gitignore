@@ -50,3 +50,6 @@ app.*.map.json
 
 # ignore google console credentials.json
 credentials.json
+
+# ignore enviroment config file
+/config/*.json
