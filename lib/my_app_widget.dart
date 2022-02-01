@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:note/core/route/route_generator.dart';
 import 'package:note/i18n/i18n.dart';
 import 'package:note/util/app_const.dart';
+import 'package:note/util/theme_data.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,12 +22,12 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocales.supportedLocales,
       locale: const Locale('th',''),
       title: appTitle,
-      theme: ThemeData(      
-        primarySwatch: Colors.green,
-      ),
+      theme: appThemeData(context),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
+
+  
 }
 

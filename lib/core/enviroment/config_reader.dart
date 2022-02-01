@@ -8,7 +8,7 @@ import 'package:note/core/enviroment/enviroment.dart';
 abstract class ConfigReader {
   static Map<String, dynamic>? _config;
 
-  //base on the parm Enviroment we read a different json file
+  //base on the parm Enviroment [dev,uat,prod] we read a different json file
   static Future<void> initialize(Enviroment env) async {
     final String configString;
     switch (env) {
@@ -25,6 +25,7 @@ abstract class ConfigReader {
         _config = json.decode(configString) as Map<String, dynamic>;
         break;
       default:
+        break;
     }    
     
   }
