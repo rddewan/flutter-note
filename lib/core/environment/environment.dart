@@ -1,5 +1,5 @@
 
-enum Enviroment {
+enum Environment {
   dev,
   uat,
   prod

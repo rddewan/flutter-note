@@ -1,6 +1,6 @@
-import 'package:note/core/enviroment/enviroment.dart';
+import 'package:note/core/environment/environment.dart';
 import 'package:note/main_app.dart';
 
 Future<void> main() async {
-  await mainApp(Enviroment.uat);
+  await mainApp(Environment.uat);
 }

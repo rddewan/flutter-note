@@ -6,8 +6,8 @@ import 'package:note/i18n/i18n.dart';
 import 'package:note/util/app_const.dart';
 import 'package:note/util/theme_data.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MainWidget extends StatelessWidget {
+  const MainWidget({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
