@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:note/feature/auth/ui/login/login_screen.dart';
-import 'package:note/feature/auth/ui/signup/signup_screen.dart';
-import 'package:note/feature/auth/ui/splash/splash_screen.dart';
+import 'package:note/feature/auth/presentation/ui/login/login_screen.dart';
+import 'package:note/feature/auth/presentation/ui/signup/signup_screen.dart';
+import 'package:note/feature/splash/presentation/ui/splash_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    //final args = settings.arguments;
 
     switch (settings.name) {
       case '/':

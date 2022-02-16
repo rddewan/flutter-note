@@ -23,9 +23,9 @@ class _$AuthModelTearOff {
   const _$AuthModelTearOff();
 
   _AuthModel call(
-      {required String accessToken,
-      required String tokenId,
-      required int userId,
+      {@JsonKey(name: 'access_token') required String accessToken,
+      @JsonKey(name: 'token_id') required String tokenId,
+      @JsonKey(name: 'user_id') required int userId,
       required String name,
       required String email}) {
     return _AuthModel(
@@ -47,8 +47,11 @@ const $AuthModel = _$AuthModelTearOff();
 
 /// @nodoc
 mixin _$AuthModel {
+  @JsonKey(name: 'access_token')
   String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_id')
   String get tokenId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
   int get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -64,9 +67,9 @@ abstract class $AuthModelCopyWith<$Res> {
   factory $AuthModelCopyWith(AuthModel value, $Res Function(AuthModel) then) =
       _$AuthModelCopyWithImpl<$Res>;
   $Res call(
-      {String accessToken,
-      String tokenId,
-      int userId,
+      {@JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'user_id') int userId,
       String name,
       String email});
 }
@@ -119,9 +122,9 @@ abstract class _$AuthModelCopyWith<$Res> implements $AuthModelCopyWith<$Res> {
       __$AuthModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String accessToken,
-      String tokenId,
-      int userId,
+      {@JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'token_id') String tokenId,
+      @JsonKey(name: 'user_id') int userId,
       String name,
       String email});
 }
@@ -172,9 +175,9 @@ class __$AuthModelCopyWithImpl<$Res> extends _$AuthModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AuthModel implements _AuthModel {
   const _$_AuthModel(
-      {required this.accessToken,
-      required this.tokenId,
-      required this.userId,
+      {@JsonKey(name: 'access_token') required this.accessToken,
+      @JsonKey(name: 'token_id') required this.tokenId,
+      @JsonKey(name: 'user_id') required this.userId,
       required this.name,
       required this.email});
 
@@ -182,10 +185,13 @@ class _$_AuthModel implements _AuthModel {
       _$$_AuthModelFromJson(json);
 
   @override
+  @JsonKey(name: 'access_token')
   final String accessToken;
   @override
+  @JsonKey(name: 'token_id')
   final String tokenId;
   @override
+  @JsonKey(name: 'user_id')
   final int userId;
   @override
   final String name;
@@ -232,9 +238,9 @@ class _$_AuthModel implements _AuthModel {
 
 abstract class _AuthModel implements AuthModel {
   const factory _AuthModel(
-      {required String accessToken,
-      required String tokenId,
-      required int userId,
+      {@JsonKey(name: 'access_token') required String accessToken,
+      @JsonKey(name: 'token_id') required String tokenId,
+      @JsonKey(name: 'user_id') required int userId,
       required String name,
       required String email}) = _$_AuthModel;
 
@@ -242,10 +248,13 @@ abstract class _AuthModel implements AuthModel {
       _$_AuthModel.fromJson;
 
   @override
+  @JsonKey(name: 'access_token')
   String get accessToken;
   @override
+  @JsonKey(name: 'token_id')
   String get tokenId;
   @override
+  @JsonKey(name: 'user_id')
   int get userId;
   @override
   String get name;

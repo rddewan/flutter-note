@@ -18,6 +18,7 @@ class PasswordFormField extends StatelessWidget {
       obscureText: true,
       obscuringCharacter: '*',
       controller: textController,
+      restorationId: 'password',
       focusNode: focusNode,
       decoration: InputDecoration(
           border: const OutlineInputBorder(
@@ -31,6 +32,7 @@ class PasswordFormField extends StatelessWidget {
         if (value.length < 8) {
           return '$lableText length must be greater then 7 char';
         }
+        return null;
       },
     );
   }

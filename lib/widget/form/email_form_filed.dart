@@ -15,6 +15,7 @@ class EmailTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      restorationId: '',
       controller: textController,
       decoration:
           InputDecoration(border: const OutlineInputBorder(), labelText: lable),
@@ -26,6 +27,7 @@ class EmailTextFormFiled extends StatelessWidget {
         if (!isValidEmail(textController.text)) {
           return '$lable is not valid';
         }
+        return null;
       },
     );
   }

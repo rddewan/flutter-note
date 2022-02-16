@@ -11,7 +11,7 @@ import 'package:note/util/failure.dart';
 /*
 provide the instance of AuthStorage
 */
-final provideAuthStorage = Provider<AuthStorage>((ref) {
+final authStorageProvider = Provider<AuthStorage>((ref) {
   final _flutterSecureStorage = ref.watch(provideFlutterSecureStorage);
   return AuthStorageImpl(_flutterSecureStorage);
 });
@@ -20,7 +20,7 @@ final provideAuthStorage = Provider<AuthStorage>((ref) {
   this calss extends AuthStorage to implement its functionality
   usage : store - read - clear the auth model in and from FlutterSecureStorage
 */
-class AuthStorageImpl extends AuthStorage {
+class AuthStorageImpl implements AuthStorage {
 
   final FlutterSecureStorage _flutterSecureStorage;
 
@@ -34,7 +34,7 @@ class AuthStorageImpl extends AuthStorage {
       //clear cache version
       _authModel = null;
       // clear the flutter secure storage - this will delete everyting in secure storage
-      _flutterSecureStorage.deleteAll();
+      await _flutterSecureStorage.deleteAll();
       return true;
     }catch (_) {
       return false;
@@ -43,34 +43,45 @@ class AuthStorageImpl extends AuthStorage {
 
   @override
   Future<AuthModel?> read() async {
-    //return the cache version os authmodel if not null
-    if (_authModel != null) {
+    try {      
+       // Return the cache version os authmodel if not null
+      if (_authModel != null) {
+        return _authModel;
+      }
+
+      // Get the access token form flutter storage
+      // It will be null when user have not loged in or user logout
+      final accessToken = await _flutterSecureStorage.read(key: 'access_token');
+      final tokenId = await _flutterSecureStorage.read(key: 'token_id');
+      final userId = await _flutterSecureStorage.read(key: 'user_id');
+      final name = await _flutterSecureStorage.read(key: 'name');
+      final email = await _flutterSecureStorage.read(key: 'email');
+
+      if (accessToken == null) {
+        return null;
+      }    
+
+      // Store the the auth mode to cache version to access later without reading it    
+      _authModel =  AuthModel(
+        accessToken:  accessToken, 
+        tokenId:  tokenId.toString(),
+        userId: int.parse(userId.toString()),     
+        name: name.toString(), 
+        email: email.toString()
+      );
+
       return _authModel;
-    }
 
-    //get the access token form flutter storage
-    // it will be null when user have not loged in or user logout
-    final accessToken = await _flutterSecureStorage.read(key: 'access_token');
-    if (accessToken == null) {
-      return null;
+    } on PlatformException catch (e) {
+      throw Failure(message: e.details);
     }
-    //create a json from flutter secure storage
-    final json = <String, dynamic>{};
-    json['access_token'] = await _flutterSecureStorage.read(key: 'access_token');
-    json['token_id'] = await _flutterSecureStorage.read(key: 'token_id');
-    json['user_id'] = await _flutterSecureStorage.read(key: 'user_id');
-    json['name'] = await _flutterSecureStorage.read(key: 'name');
-    json['email'] = await _flutterSecureStorage.read(key: 'email');
-    //store the the auth mode to cache version to access later without reading it
-    _authModel = AuthModel.fromJson(json);
-
-    return _authModel;
+   
   }
 
   @override
   Future<bool> save(AuthModel authModel) async {
     try {
-      //save to cache version so we can access it without reading it
+      // Save to cache version so we can access it without reading it
       _authModel = authModel;
 
       // write to flutter secure storage
@@ -81,6 +92,19 @@ class AuthStorageImpl extends AuthStorage {
       _flutterSecureStorage.write(key: 'email', value: authModel.email);
 
       return true;
+
+    } on PlatformException catch (e) {
+      throw Failure(message: e.details);
+    }
+  }
+
+  @override
+  Future<String?> readAccessToken() async {
+    try {
+
+      final accessToken = await _flutterSecureStorage.read(key: 'access_token');
+
+      return accessToken;
 
     } on PlatformException catch (e) {
       throw Failure(message: e.details);

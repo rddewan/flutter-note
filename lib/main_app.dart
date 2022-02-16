@@ -17,8 +17,12 @@ Future<void> mainApp(Environment env) async {
   });
 
   runApp(
-    // Enabled Riverpod for the entire application
-    const ProviderScope(child: MainWidget())
+    const RootRestorationScope(
+      restorationId: 'root', 
+      child: ProviderScope(
+        child: MainWidget()
+      )
+    )
   );
 
 }

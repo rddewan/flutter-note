@@ -41,6 +41,6 @@ A simple note take app
 * Run and Debug > Select Flavor From Dropdown > Click  on Run Button
 
 ## Useful command
-* flutter pub run build_runner build --delete-conflicting-outputs
-* flutter pub run build_runner watch --delete-conflicting-outputs
+* fvm flutter pub run build_runner build --delete-conflicting-outputs
+* fvm flutter pub run build_runner watch --delete-conflicting-outputs
 * fts extract -s -p lib/ -o strings/strings.yaml (extract string to strings/strings.yaml)

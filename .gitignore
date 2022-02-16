@@ -53,3 +53,14 @@ credentials.json
 
 # ignore enviroment config file
 /config/*.json
+
+# exclude firebase google service  for android
+/android/app/src/dev/google-services.json
+/android/app/src/uat/google-services.json
+/android/app/src/prod/google-services.json
+
+# exclude  fire base google service for iOS
+**/ios/config/dev/GoogleService-Info.plist
+**/ios/config/uat/GoogleService-Info.plist
+**/ios/config/prod/GoogleService-Info.plist
+**/ios/Runner/GoogleService-Info.plist
