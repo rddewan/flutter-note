@@ -5,7 +5,7 @@ import 'package:note/feature/note/application/service/note_service_impl.dart';
 import 'package:note/feature/note/presentation/state/note_state.dart';
 
 // Provide NoteController
-final noteControllerProvider = StateNotifierProvider<NoteController,NoteState>((ref) {
+final noteControllerProvider = StateNotifierProvider.autoDispose<NoteController,NoteState>((ref) {
   final _noteService = ref.watch(noteServiceProvider);
 
   return NoteController(_noteService, NoteState(notes: const AsyncValue.loading()));

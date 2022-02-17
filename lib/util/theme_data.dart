@@ -13,6 +13,5 @@ ThemeData appThemeData(BuildContext context) {
           headline1: GoogleFonts.openSans(textStyle: Theme.of(context).textTheme.headline1),
           headline2: GoogleFonts.openSans(textStyle: Theme.of(context).textTheme.headline2),
 
-      )
-    );
+      )); 
   }

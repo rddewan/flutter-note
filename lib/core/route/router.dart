@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:note/core/route/name_route.dart';
 import 'package:note/feature/auth/presentation/ui/login/login_screen.dart';
 import 'package:note/feature/auth/presentation/ui/signup/signup_screen.dart';
-import 'package:note/feature/note/presentation/ui/home/home_screen.dart';
+import 'package:note/feature/home/presentation/ui/home_screen.dart';
 import 'package:note/feature/setting/presentation/ui/setting_screen.dart';
 import 'package:note/feature/splash/presentation/ui/splash_screen.dart';
 import 'package:note/widget/error/error_screen.dart';

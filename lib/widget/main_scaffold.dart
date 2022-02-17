@@ -5,12 +5,11 @@ import 'package:note/core/route/name_route.dart';
 import 'package:note/feature/auth/presentation/controller/signout/signout_controller.dart';
 import 'package:note/feature/auth/presentation/state/signout/signout_state.dart';
 
-
 class MainScaffold extends ConsumerStatefulWidget {
   const MainScaffold(this.title, this.widget, this.fab, {Key? key})
       : super(key: key);
-  final String title;
-  final Widget widget;
+  final List<String> title;
+  final List<Widget> widget;
   final FloatingActionButton? fab;
 
   @override
@@ -18,6 +17,8 @@ class MainScaffold extends ConsumerStatefulWidget {
 }
 
 class _MainScaffoldState extends ConsumerState<MainScaffold> {
+  int index = 0;  
+
   @override
   void initState() {    
     super.initState();   
@@ -30,14 +31,41 @@ class _MainScaffoldState extends ConsumerState<MainScaffold> {
 
     return Scaffold(
       appBar: _buildAppBar(context),
-      body: SafeArea(child: widget.widget),
+      body: SafeArea(child: IndexedStack(
+        index: index,
+        children: widget.widget,
+      )),
       floatingActionButton: widget.fab,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
+        onTap: (value) => setState(() {
+          index = value;
+        }),
+        backgroundColor: Colors.green.shade400,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white30,
+        showSelectedLabels: false,
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.note),
+            activeIcon: Icon(Icons.notes_outlined),
+            label: 'Note',
+            backgroundColor: Colors.white
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            activeIcon: Icon(Icons.add_outlined),
+            label: 'Note',
+            backgroundColor: Colors.white
+          )
+        ])      
     );
   }
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text(widget.title),
+      title: Text(widget.title[index]),
       centerTitle: true,
       actions: [
         Theme(

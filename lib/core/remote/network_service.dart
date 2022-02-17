@@ -35,12 +35,12 @@ class _AuthInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async  {
 
-    // Get the acess token from secure storage
+    // Get the access token from secure storage
     // if the access token is not null the set the request header Authorization
-   final authModel = await  _authStorage.read();
-   if (authModel != null) {
+   final accessToken = await  _authStorage.readAccessToken();
+   if (accessToken != null) {
       options.headers['Accept'] = 'application/json';    
-      options.headers['Authorization'] = authModel.accessToken;
+      options.headers['Authorization'] = accessToken;
     }
     else {
       options.headers['Accept'] = 'application/json';
