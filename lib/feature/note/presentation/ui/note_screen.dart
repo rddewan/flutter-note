@@ -50,19 +50,20 @@ class _NoteScreenState extends ConsumerState<NoteScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(note.id),
-                    const SizedBox(height: 4.0,),
+                  children: [ 
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(note.createdDate),
+                      ],
+                    ),
                     Text(note.title),
                     const SizedBox(height: 4.0,),
                     Text(note.body),
                     const SizedBox(height: 4.0,),
                     Text(note.status),
-                    const SizedBox(height: 4.0,),
-                    Text(note.userId),
-                    const SizedBox(height: 4.0,),
-                    Text(note.createdAt),
-                    const SizedBox(height: 4.0,),
+                    const SizedBox(height: 4.0,),                         
+                    
                   ],
                 ),
               ),

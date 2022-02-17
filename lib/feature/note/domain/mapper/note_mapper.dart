@@ -2,9 +2,8 @@
 import 'package:note/feature/note/domain/model/note_model.dart';
 import 'package:note/feature/note/infrastructure/dto/response/note_response.dart';
 
-abstract class NoteRepository {
+abstract class NoteMapper {
 
-  Future<List<NoteModel>> getNotes();
-  
-  Future<NoteResponse> getNote(int id);
+  List<NoteModel> mapToModel(List<NoteResponse> response);
+
 }

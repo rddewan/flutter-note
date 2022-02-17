@@ -19,7 +19,7 @@ class _$NoteStateTearOff {
   const _$NoteStateTearOff();
 
   _NoteState call(
-      {required AsyncValue<List<NoteResponse>> notes, bool isLoading = false}) {
+      {required AsyncValue<List<NoteModel>> notes, bool isLoading = false}) {
     return _NoteState(
       notes: notes,
       isLoading: isLoading,
@@ -32,8 +32,7 @@ const $NoteState = _$NoteStateTearOff();
 
 /// @nodoc
 mixin _$NoteState {
-  AsyncValue<List<NoteResponse>> get notes =>
-      throw _privateConstructorUsedError;
+  AsyncValue<List<NoteModel>> get notes => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -45,7 +44,7 @@ mixin _$NoteState {
 abstract class $NoteStateCopyWith<$Res> {
   factory $NoteStateCopyWith(NoteState value, $Res Function(NoteState) then) =
       _$NoteStateCopyWithImpl<$Res>;
-  $Res call({AsyncValue<List<NoteResponse>> notes, bool isLoading});
+  $Res call({AsyncValue<List<NoteModel>> notes, bool isLoading});
 }
 
 /// @nodoc
@@ -65,7 +64,7 @@ class _$NoteStateCopyWithImpl<$Res> implements $NoteStateCopyWith<$Res> {
       notes: notes == freezed
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<List<NoteResponse>>,
+              as AsyncValue<List<NoteModel>>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -80,7 +79,7 @@ abstract class _$NoteStateCopyWith<$Res> implements $NoteStateCopyWith<$Res> {
           _NoteState value, $Res Function(_NoteState) then) =
       __$NoteStateCopyWithImpl<$Res>;
   @override
-  $Res call({AsyncValue<List<NoteResponse>> notes, bool isLoading});
+  $Res call({AsyncValue<List<NoteModel>> notes, bool isLoading});
 }
 
 /// @nodoc
@@ -101,7 +100,7 @@ class __$NoteStateCopyWithImpl<$Res> extends _$NoteStateCopyWithImpl<$Res>
       notes: notes == freezed
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<List<NoteResponse>>,
+              as AsyncValue<List<NoteModel>>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -116,7 +115,7 @@ class _$_NoteState implements _NoteState {
   _$_NoteState({required this.notes, this.isLoading = false});
 
   @override
-  final AsyncValue<List<NoteResponse>> notes;
+  final AsyncValue<List<NoteModel>> notes;
   @JsonKey()
   @override
   final bool isLoading;
@@ -149,11 +148,11 @@ class _$_NoteState implements _NoteState {
 
 abstract class _NoteState implements NoteState {
   factory _NoteState(
-      {required AsyncValue<List<NoteResponse>> notes,
+      {required AsyncValue<List<NoteModel>> notes,
       bool isLoading}) = _$_NoteState;
 
   @override
-  AsyncValue<List<NoteResponse>> get notes;
+  AsyncValue<List<NoteModel>> get notes;
   @override
   bool get isLoading;
   @override

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:note/widget/main_scaffold.dart';
+
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -12,6 +12,12 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Setting'),
+        centerTitle: true,
+      ),
+      body: Column(),
+    );
   }
 }

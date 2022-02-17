@@ -4,6 +4,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:note/feature/note/domain/date_converter/date_converter.dart';
+import 'package:note/feature/note/domain/mapper/note_mapper.dart';
+import 'package:note/feature/note/domain/model/note_model.dart';
 import 'package:note/feature/note/infrastructure/dto/response/note_response.dart';
 import 'package:note/feature/note/infrastructure/remote_service/note_api_service.dart';
 import 'package:note/feature/note/infrastructure/repository/note_repository.dart';
@@ -17,23 +20,24 @@ final noteRepositoryProvider = Provider<NoteRepository>((ref) {
 });
 
 /// Repository class @param [NoteApiService]
-class NoteRepositoryImpl extends NoteRepository {
+class NoteRepositoryImpl implements NoteRepository, NoteMapper {
   final NoteApiService _apiService;
 
   NoteRepositoryImpl(this._apiService);
 
   @override
-  Future<NoteResponse> getNote(int id) {
-    // TODO: implement getNote
+  Future<NoteResponse> getNote(int id) {    
     throw UnimplementedError();
   }
 
   // Get the list of notes
   @override
-  Future<List<NoteResponse>> getNotes() async {
+  Future<List<NoteModel>> getNotes() async {
     try {
 
-      return await _apiService.getNotes();
+      final result = await _apiService.getNotes();
+
+      return mapToModel(result);     
 
     } on DioError catch (e) {
       
@@ -48,5 +52,17 @@ class NoteRepositoryImpl extends NoteRepository {
       );
     }
   }
+
+  @override
+  List<NoteModel> mapToModel(List<NoteResponse> response) {
+    return response.map((e) {
+      return NoteModel(
+        title: e.title, 
+        body: e.body, 
+        status: e.status, 
+        createdDate: DateConverter.getFormattedDate(e.createdAt)
+      );
+    }).toList();
+  }  
   
 }

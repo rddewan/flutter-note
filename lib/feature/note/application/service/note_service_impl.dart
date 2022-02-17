@@ -2,7 +2,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:note/feature/note/application/service/note_service.dart';
-import 'package:note/feature/note/infrastructure/dto/response/note_response.dart';
+import 'package:note/feature/note/domain/model/note_model.dart';
 import 'package:note/feature/note/infrastructure/repository/note_repository.dart';
 import 'package:note/feature/note/infrastructure/repository/note_repository_impl.dart';
 import 'package:note/util/failure.dart';
@@ -21,12 +21,12 @@ class NoteServiceImpl extends NoteService {
   NoteServiceImpl(this._repository);
 
   @override
-  Future<Result<Failure, List<NoteResponse>>> getNotes() async {
+  Future<Result<Failure, List<NoteModel>>> getNotes() async {
     try {
 
-      final reslut = await _repository.getNotes();
+      final result = await _repository.getNotes();
 
-      return Success(reslut);
+      return Success(result);
 
     } on Failure catch (failure) {
       return Error(failure);
