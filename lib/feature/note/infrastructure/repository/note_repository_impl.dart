@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:note/feature/note/domain/date_converter/date_converter.dart';
 import 'package:note/feature/note/domain/mapper/note_mapper.dart';
 import 'package:note/feature/note/domain/model/note_model.dart';
@@ -20,7 +21,7 @@ final noteRepositoryProvider = Provider<NoteRepository>((ref) {
 });
 
 /// Repository class @param [NoteApiService]
-class NoteRepositoryImpl implements NoteRepository, NoteMapper {
+class NoteRepositoryImpl implements NoteRepository, NoteMapper,DateConverter {
   final NoteApiService _apiService;
 
   NoteRepositoryImpl(this._apiService);
@@ -60,9 +61,16 @@ class NoteRepositoryImpl implements NoteRepository, NoteMapper {
         title: e.title, 
         body: e.body, 
         status: e.status, 
-        createdDate: DateConverter.getFormattedDate(e.createdAt)
+        createdDate: getFormattedDate(e.createdAt)
       );
     }).toList();
+  }
+
+  @override
+  String getFormattedDate(String stringDateTime) {
+    final date = DateTime.parse(stringDateTime);
+
+    return DateFormat('d/MM/yyyy hh:m').format(date);    
   }  
   
 }
