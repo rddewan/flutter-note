@@ -52,7 +52,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 children: [               
                   Consumer(
                     builder: (context,_,child) {
-                    if (ref.watch(signupControllPerrovider).isLoading) {
+                    if (ref.watch(signupControllerProvider).isLoading) {
                       return const Center(
                         child: CircularProgressIndicator(color: Colors.orangeAccent)
                       );
@@ -127,7 +127,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
           confirmPassword: _conformPasswordController.text
         );
         // call the signup function in controller
-        ref.read(signupControllPerrovider.notifier).signup(request);
+        ref.read(signupControllerProvider.notifier).signup(request);
       }
       else {
         buildErrorDialog(context, title: 'Ouch!', msg: 'Passwod did not match');
@@ -137,7 +137,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   }
 
   void listenSignupState(){
-    ref.listen<SignupState>(signupControllPerrovider, (previous, next) { 
+    ref.listen<SignupState>(signupControllerProvider, (previous, next) { 
       next.isSignup.when(
         data: (data) {
           if (data) {            

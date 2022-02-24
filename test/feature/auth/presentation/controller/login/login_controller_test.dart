@@ -30,19 +30,23 @@ void main() {
 
   group('LoginControllerTests', () {
 
-    test('Given login detail When login Then should return true', () async {
+    test('Given login detail When login Then should return true and isLogedin state should be true', () async {
 
       when(() => mockedLoginService.login(loginRequest))
           .thenAnswer((invocation) => Future.value(const Success(true))          
       );
 
+      // Call the login method in controller         
       container.read(loginControllerProvider.notifier)
         .login(loginRequest);
 
+      // Read the state
       await container.read(loginControllerProvider.notifier)
         .stream.firstWhere((state) => state.isLogedin is AsyncData);
       
       //debugPrint((container.read(loginControllerProvider).isLogedin.value.toString()));
+
+      // Assert isLogedin value is true
       expect(container.read(loginControllerProvider).isLogedin.value, true);
 
     });
