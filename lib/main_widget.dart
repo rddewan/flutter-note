@@ -32,7 +32,7 @@ class _MainWidgetState extends ConsumerState<MainWidget> with RestorationMixin{
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: AppLocales.supportedLocales,
-        locale: const Locale('th',''),
+        locale: const Locale('en',''),
         title: appTitle,
         theme: appThemeData(context),
         // initialRoute: '/',
