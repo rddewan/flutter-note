@@ -12,5 +12,16 @@
 
     "editor.fontSize": 14,
     "window.zoomLevel": 1,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "cSpell.diagnosticLevel": "Hint",
+    "editorHint.foreground": "#f000",
+
+    "workbench.colorCustomizations": {
+       // will change the color of three dots to red
+      "editorHint.foreground": "#f000",    
+      // will underline the entire word with dots in your chosen color
+      "editorHint.border": "#00ff66"
+      
+  }
+    
 }

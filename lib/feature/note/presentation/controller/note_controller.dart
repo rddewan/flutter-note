@@ -21,7 +21,7 @@ class NoteController extends StateNotifier<NoteState> {
 
   Future<void> getNotes() async {
     state = state.copyWith(notes: const AsyncValue.loading(), isLoading: true);
-
+    
     final result = await _noteService.getNotes();
     result.when(
       (error) => state = state.copyWith(notes: AsyncValue.error(error), isLoading: false), 

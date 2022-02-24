@@ -7,7 +7,7 @@ import 'package:note/feature/auth/infrastructure/dto/request/signup/signup_reque
 import 'package:note/feature/auth/presentation/state/signup/signup_state.dart';
 
 // Provide SignupController
-final signupControllPerrovider = StateNotifierProvider.autoDispose<SignupController,SignupState>((ref) {
+final signupControllerProvider = StateNotifierProvider.autoDispose<SignupController,SignupState>((ref) {
   final _service = ref.watch(signupServiceProvider);
   
   return SignupController(_service, SignupState(isSignup: const AsyncValue.loading()));

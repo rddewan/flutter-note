@@ -60,79 +60,63 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
       body: SafeArea(
         child: LayoutBuilder(builder: (context,constraints) {
           final maxWidth = constraints.maxWidth;
-          if (maxWidth <= mobileDeviceWidth) {
-            //is a mobile device
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        Consumer(builder: (context,ref,child) {
-                          if (ref.watch(loginControllerProvider).isLoading){
-                            return const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Center(
-                                child:  CircularProgressIndicator(),
-                              ),
-                            );                            
-                          }
-                          return const Text('');
-                        }),
-                        EmailTextFormFiled(
-                          lable: local!.emailText, 
-                          textController: _emailController),
-                        const SizedBox(height: 16.0),
-                        PasswordFormField(
-                          lableText: local!.passwordText,
-                          textController: _passwordController,
-                          focusNode: _passwordFocusNode
-                        ),
-                        const SizedBox(height: 24.0),
-                        OrangeGradientButton(                                
-                              text: local!.loginText,
-                              onTapCallBack: () {
-                                login();                             
-                              },
-                        ),
-                        const SizedBox(height: 24.0,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("Don't have a account? | ", style: TextStyle(fontSize: 16.0,)),
-                            InkWell(
-                              onTap: () => context.goNamed(signupNameRoute),
-                              child: const Text("Signup Now", style: TextStyle(color: Colors.blueAccent,fontSize: 18.0),)
-                            )
-                          ],
-                        )
-                                          
-                      ],
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Consumer(builder: (context,ref,child) {
+                        if (ref.watch(loginControllerProvider).isLoading){
+                          return const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Center(
+                              child:  CircularProgressIndicator(),
+                            ),
+                          );                            
+                        }
+                        return const Text('');
+                      }),
+                      EmailTextFormFiled(
+                        lable: local!.emailText, 
+                        textController: _emailController),
+                      const SizedBox(height: 16.0),
+                      PasswordFormField(
+                        lableText: local!.passwordText,
+                        textController: _passwordController,
+                        focusNode: _passwordFocusNode
+                      ),
+                      const SizedBox(height: 24.0),
+                      OrangeGradientButton(                                
+                            text: local!.loginText,
+                            onTapCallBack: () {
+                              login();                             
+                            },
+                      ),
+                      const SizedBox(height: 24.0,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Don't have a account? | ", style: TextStyle(fontSize: 16.0,)),
+                          InkWell(
+                            onTap: () => context.goNamed(signupNameRoute),
+                            child: const Text("Signup Now", style: TextStyle(color: Colors.blueAccent,fontSize: 18.0),)
+                          )
+                        ],
+                      )
+                                        
+                    ],
 
-                    ),
-                  ),                  
-                )
-              ],
-            );
-          }
-          else if (maxWidth > mobileDeviceWidth && maxWidth <= tabDeviceWidth) {
-            //is a tablet
-            return Center(
-              child: Text(local!.tabletNotSupported),
-            );
-
-          }
-          else {
-            //is a desktop
-            return Center(
-              child: Text(local!.desktopNotSupported),
-            );
-          }
-
-        })
+                  ),
+                ),                  
+              )
+            ],
+          );         
+        },
+        ),
       ),
     );
   }
