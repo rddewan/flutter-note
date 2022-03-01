@@ -11,7 +11,8 @@ abstract class LoginState with _$LoginState{
 
   factory LoginState({
     required AsyncValue<bool> isLogedin,
-    @Default(false) bool isLoading
+    @Default(false) bool isLoading,
+    @Default(false) bool isPaused,
   }) = _LoginState;
 
 }

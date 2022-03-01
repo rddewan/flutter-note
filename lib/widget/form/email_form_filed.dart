@@ -15,7 +15,7 @@ class EmailTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      restorationId: '',
+      restorationId: 'email',
       controller: textController,
       decoration:
           InputDecoration(border: const OutlineInputBorder(), labelText: lable),
