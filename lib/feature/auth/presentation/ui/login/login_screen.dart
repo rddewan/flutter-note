@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note/base/base_consumer_state.dart';
 import 'package:note/core/route/name_route.dart';
 import 'package:note/feature/auth/infrastructure/dto/request/login/login_request.dart';
 import 'package:note/feature/auth/presentation/controller/login/login_controller.dart';
 import 'package:note/feature/auth/presentation/state/login/login_state.dart';
-import 'package:note/util/app_const.dart';
 import 'package:note/util/build_error_dialog.dart';
 import 'package:note/util/failure.dart';
 import 'package:note/widget/form/email_form_filed.dart';
@@ -20,25 +19,26 @@ class LoginScreen extends ConsumerStatefulWidget {
   _LoginScreen createState() => _LoginScreen();
 }
 
-class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with RestorationMixin {  
+class _LoginScreen extends BaseConsumerState<LoginScreen> {  
   final RestorableString _email = RestorableString('');
   final RestorableString _password = RestorableString('');
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   late FocusNode _passwordFocusNode;
   final _formKey = GlobalKey<FormState>();
-  late AppLocalizations? local;
-
+ 
   @override
   void initState() {    
-    super.initState();
+    super.initState();    
     _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+    _passwordController = TextEditingController();   
     _passwordFocusNode = FocusNode();  
+
+    textEditingControllerListener();
   }
 
   @override
-  void dispose() {
+  void dispose() {    
     _emailController.dispose();
     _passwordController.dispose();
     _passwordFocusNode.dispose();
@@ -48,19 +48,24 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
   }
 
   @override
-  Widget build(BuildContext context) {
-    local = AppLocalizations?.of(context);
+  Widget build(BuildContext context) {   
     listenLoginState();
+    final appState = ref.watch(loginControllerProvider).isPaused;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(local!.loginText),
+        title: Text(translations.loginText),
         centerTitle: true,
       ),
       body: SafeArea(
         child: LayoutBuilder(builder: (context,constraints) {
-          final maxWidth = constraints.maxWidth;
-          return Column(
+          if (appState) {
+            return Container(
+              color: Colors.black,
+            );
+          }
+          else {
+            return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
@@ -68,7 +73,7 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    children: [
+                    children: [                        
                       Consumer(builder: (context,ref,child) {
                         if (ref.watch(loginControllerProvider).isLoading){
                           return const Padding(
@@ -81,17 +86,17 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
                         return const Text('');
                       }),
                       EmailTextFormFiled(
-                        lable: local!.emailText, 
+                        lable: translations.emailText, 
                         textController: _emailController),
                       const SizedBox(height: 16.0),
                       PasswordFormField(
-                        lableText: local!.passwordText,
+                        lableText: translations.passwordText,
                         textController: _passwordController,
                         focusNode: _passwordFocusNode
                       ),
                       const SizedBox(height: 24.0),
                       OrangeGradientButton(                                
-                            text: local!.loginText,
+                            text: translations.loginText,
                             onTapCallBack: () {
                               login();                             
                             },
@@ -109,13 +114,16 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
                       )
                                         
                     ],
-
+                
                   ),
                 ),                  
               )
             ],
           );         
-        },
+        
+
+          }
+          },
         ),
       ),
     );
@@ -153,17 +161,48 @@ class _LoginScreen extends ConsumerState<ConsumerStatefulWidget> with Restoratio
 
     });
   }
+  
+  void textEditingControllerListener() {
+    _emailController.addListener(() { 
+      _email.value = _emailController.text;      
+    });
 
-  @override  
-  String? get restorationId => 'login_screen';
+    _passwordController.addListener(() { 
+      _password.value = _passwordController.text;   
+      
+    });
+  }
 
   @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {     
-    registerForRestoration(_email, 'email');
-    registerForRestoration(_password, 'password');    
-    _emailController.value = TextEditingValue( text: _email.value);    
-    
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {   
+    super.restoreState(oldBucket,initialRestore);
+
+    registerForRestoration(_email, 'login_email');
+    registerForRestoration(_password, 'login_password');    
+    _emailController.value = TextEditingValue( text: _email.value); 
+    _passwordController.value = TextEditingValue(text: _password.value); 
   } 
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {    
+    switch (state) {
+      case AppLifecycleState.inactive: 
+        ref.read(loginControllerProvider.notifier).setPausedState();
+        debugPrint(state.toString());         
+        break;
+      case AppLifecycleState.paused:          
+        debugPrint(state.toString());
+        break;
+      case AppLifecycleState.detached:        
+        debugPrint(state.toString());
+        break;
+      case AppLifecycleState.resumed:             
+        ref.read(loginControllerProvider.notifier).setPausedState();
+        debugPrint(state.toString());
+        break;      
+      
+    }
+  } 
+  
 }
 

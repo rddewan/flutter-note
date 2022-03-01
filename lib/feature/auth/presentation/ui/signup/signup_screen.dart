@@ -19,17 +19,21 @@ class SignupScreen extends ConsumerStatefulWidget {
   ConsumerState<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends ConsumerState<SignupScreen> { 
+class _SignupScreenState extends ConsumerState<SignupScreen> with RestorationMixin<SignupScreen>{ 
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _conformPasswordController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final RestorableString _name = RestorableString('');
+  final RestorableString _email = RestorableString('');
+  final RestorableTextEditingController _password = RestorableTextEditingController();
 
   @override
   void initState() {    
     super.initState();
+    textEditingControllerListener();    
   }
 
   @override
@@ -168,5 +172,33 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     _passwordController.dispose();
     _conformPasswordController.dispose(); 
     super.dispose();
+  }
+
+  @override
+  String? get restorationId => 'signup_screen';
+
+  @override
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {   
+    registerForRestoration(_name, 'signup_name');
+    registerForRestoration(_email, 'signup_email');
+    registerForRestoration(_password, 'signup_password');
+    _nameController.value = TextEditingValue(text: _name.value);
+    _emailController.value = TextEditingValue(text: _email.value);
+    _passwordController.value = TextEditingValue(text: _password.value.text);
+  }
+
+  void textEditingControllerListener() {
+    _nameController.addListener(() {
+      _name.value =  _nameController.text;
+    });
+    
+    _emailController.addListener(() {
+      _email.value = _emailController.text;
+    });
+
+    _passwordController.addListener(() {
+      _password.value.value = _passwordController.value;
+      debugPrint(_password.value.text);
+    });
   }
 }

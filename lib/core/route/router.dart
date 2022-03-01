@@ -59,6 +59,7 @@ abstract class AppRouter {
               name: settingNameRoute,
               path: settingRoute,
               pageBuilder: (context,state) => CustomTransitionPage<void>(
+                //restorationId: 'signup_screen',
                 child: const SettingScreen(), 
                 transitionsBuilder: (_,animation,__,child) =>
                   SlideTransition(
