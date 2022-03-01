@@ -10,8 +10,8 @@
       "**/.fvm": true
     },
 
-    "editor.fontSize": 14,
-    "window.zoomLevel": 1,
+    "editor.fontSize": 16,
+    "window.zoomLevel": 0.5,
     "files.autoSave": "afterDelay",
     "cSpell.diagnosticLevel": "Hint",
     "editorHint.foreground": "#f000",

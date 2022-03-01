@@ -1028,12 +1028,12 @@ packages:
     source: hosted
     version: "1.0.0"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.5"
+    version: "3.0.6"
   validators2:
     dependency: transitive
     description:

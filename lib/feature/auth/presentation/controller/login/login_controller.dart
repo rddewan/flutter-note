@@ -1,5 +1,6 @@
 
 
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:note/feature/auth/application/service/login/login_service.dart';
 import 'package:note/feature/auth/application/service/login/login_service_impl.dart';
@@ -27,6 +28,10 @@ class LoginController extends StateNotifier<LoginState> {
       (error) => state = state.copyWith(isLogedin: AsyncValue.error(error),isLoading: false), 
       (success) => state = state.copyWith(isLogedin: AsyncValue.data(success),isLoading: false));
 
+  }
+
+  void setPausedState(){
+    state = state.copyWith(isPaused: !state.isPaused);
   }
 
 }

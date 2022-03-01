@@ -6,8 +6,6 @@ part of 'signup_api_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _SignupApiService implements SignupApiService {
   _SignupApiService(this._dio, {this.baseUrl});
 
