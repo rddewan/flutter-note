@@ -23,9 +23,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {    
-    return MainScaffold(
+    return const MainScaffold(
       ['Note','Add Note'],
-      [const NoteScreen(),AddScreen()]
+      [NoteScreen(),AddScreen()]
       , 
       null
     );

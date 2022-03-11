@@ -183,26 +183,7 @@ class _LoginScreen extends BaseConsumerState<LoginScreen> {
     _passwordController.value = TextEditingValue(text: _password.value); 
   } 
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {    
-    switch (state) {
-      case AppLifecycleState.inactive: 
-        ref.read(loginControllerProvider.notifier).setPausedState();
-        debugPrint(state.toString());         
-        break;
-      case AppLifecycleState.paused:          
-        debugPrint(state.toString());
-        break;
-      case AppLifecycleState.detached:        
-        debugPrint(state.toString());
-        break;
-      case AppLifecycleState.resumed:             
-        ref.read(loginControllerProvider.notifier).setPausedState();
-        debugPrint(state.toString());
-        break;      
-      
-    }
-  } 
+  
   
 }
 
