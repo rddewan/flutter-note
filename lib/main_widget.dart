@@ -7,6 +7,7 @@ import 'package:note/core/route/router.dart';
 import 'package:note/i18n/i18n.dart';
 import 'package:note/util/app_const.dart';
 import 'package:note/util/theme_data.dart';
+import 'package:note/widget/obscure_ui_widget.dart';
 
 class MainWidget extends ConsumerStatefulWidget {
   const MainWidget({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
       locale: const Locale('en',''),
       title: appTitle,
       theme: appThemeData(context),
+      builder: (_, child) => ObscureUIWidget(child: child),
       // initialRoute: '/',
       // onGenerateRoute: RouteGenerator.generateRoute,
     );
