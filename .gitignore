@@ -48,11 +48,9 @@ app.*.map.json
 # ignore fvm flutter sdk
 .fvm/flutter_sdk
 
-# ignore google console credentials.json
-credentials.json
-
-# ignore enviroment config file
+# ignore the config json file
 /config/*.json
+/config/*.env*
 
 # exclude firebase google service  for android
 /android/app/src/dev/google-services.json
@@ -64,3 +62,9 @@ credentials.json
 **/ios/config/uat/GoogleService-Info.plist
 **/ios/config/prod/GoogleService-Info.plist
 **/ios/Runner/GoogleService-Info.plist
+
+# ignore google service private key
+credentials.json
+.env.*
+/android/key.properties
+/android/keystores/*.jks
